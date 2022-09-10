@@ -1,9 +1,8 @@
 <aside>
     {%for category in categorys%}
     <a href="/category/{{category}}" class="m-1 text-decoration-none">
-      <div class="fs-4 btn btn-white d-block p-2">{{category|capfirst}}</div>
+      <div class="fs-4 btn btn-white d-block p-2">{{category}}</div>
     </a>
     {%endfor%}
 </aside>
-
 {%block aside%} {%endblock%}
