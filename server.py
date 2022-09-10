@@ -39,3 +39,6 @@ def category(cats):
         return render_template('category.html',newes=parse_json["sources"],cats=cats,categorys=categorys)
     else:
         return "Not Found"
+
+if __name__ == '__main__':
+    app.run(debug=True)
