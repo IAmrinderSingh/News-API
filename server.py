@@ -4,7 +4,12 @@ import json
 from data import categorys 
 app = Flask(__name__)
 
+
 baseurl = "https://newsapi.org/v2/"
+
+@app.template_filter()
+def capfirst(value):
+    return value[:1].upper()+value[1:]
 
 @app.route("/")
 def home():
