@@ -1,0 +1,18 @@
+{%extends "layout.html"%}
+{%block nav%}
+<h1 class="heading text-center mt-4 mb-5">{{cats|capfirst}}</h1>
+{%for news in newes%}
+    <!-- <a href="{{news.url}}" target="_blank"> -->
+        <div class="card" style="width: 38rem; margin: 20px auto;">
+            <div class="card-body">
+              <h5 class="card-title ">{{news.name|capfirst}}</h5>
+              <p class="card-text">{{news.description}}</p>
+              <!-- <a href="#" class="card-link"></a -->
+              <a class="btn btn-primary p-3 text-white" href="{{news.url}}" target="_blank" role="button">Read More</a>
+            </div>
+          </div>
+    <!-- </a> -->
+    {%endfor%}
+{%endblock%}
+{%block footer%}
+{%endblock%}

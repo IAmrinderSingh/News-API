@@ -2,6 +2,7 @@ from flask import Flask,render_template
 import requests
 import json
 from data import categorys 
+import datetime
 app = Flask(__name__)
 
 
@@ -27,3 +28,14 @@ def home():
     data = response_API.text
     parse_json = json.loads(data)
     return render_template("index.html",newes=parse_json["articles"],categorys=categorys)
+
+@app.route(f'/category/<cats>')
+def category(cats):
+    if(cats.lower() in categorys):
+        url = f'https://newsapi.org/v2/top-headlines/sources?category={cats}&apiKey={apiKey}'
+        response_API = requests.get(url)
+        data = response_API.text
+        parse_json = json.loads(data)
+        return render_template('category.html',newes=parse_json["sources"],cats=cats,categorys=categorys)
+    else:
+        return "Not Found"
