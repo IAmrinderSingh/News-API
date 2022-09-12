@@ -1,7 +1,8 @@
 <aside>
+    <h1 class="fs-3 text-capitalize m-2">categorys</h1>
     {%for category in categorys%}
     <a href="/category/{{category}}" class="m-1 text-decoration-none">
-      <div class="fs-4 btn btn-white d-block p-2">{{category|capfirst}}</div>
+      <div class="fs-6 btn btn-white d-block text-start ms-3 text-secondary">{{category|capfirst}}</div>
     </a>
     {%endfor%}
 </aside>
