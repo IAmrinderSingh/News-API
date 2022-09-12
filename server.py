@@ -8,6 +8,13 @@ app = Flask(__name__)
 
 baseurl = "https://newsapi.org/v2/"
 
+def handle_request(url):
+    url = f'{baseurl}{url}&apiKey={apiKey}'
+    response_API = requests.get(url)
+    data = response_API.text
+    parse_json = json.loads(data)
+    return parse_json
+
 @app.template_filter()
 def format_datetime(value, format='medium'):
      # Create a python date object to work on
@@ -23,20 +30,14 @@ def capfirst(value):
 
 @app.route("/")
 def home():
-    url = f'{baseurl}everything?q=country=in&apiKey={apiKey}'
-    response_API = requests.get(url)
-    data = response_API.text
-    parse_json = json.loads(data)
-    return render_template("index.html",newes=parse_json["articles"],categorys=categorys)
+    newes=handle_request("everything?q=country=in")["articles"]
+    return render_template("index.html",newes=newes,categorys=categorys)
 
 @app.route(f'/category/<cats>')
 def category(cats):
     if(cats.lower() in categorys):
-        url = f'https://newsapi.org/v2/top-headlines/sources?category={cats}&apiKey={apiKey}'
-        response_API = requests.get(url)
-        data = response_API.text
-        parse_json = json.loads(data)
-        return render_template('category.html',newes=parse_json["sources"],cats=cats,categorys=categorys)
+        newes=handle_request("everything?q=country=in")["sources"]
+        return render_template('category.html',newes=newes,cats=cats,categorys=categorys)
     else:
         return "Not Found"
 
