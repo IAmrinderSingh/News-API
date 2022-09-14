@@ -36,7 +36,7 @@ def home():
 @app.route(f'/category/<cats>')
 def category(cats):
     if(cats.lower() in categorys):
-        newes=handle_request("everything?q=country=in")["sources"]
+        newes=handle_request(f"top-headlines/sources?category={cats}")["sources"]
         return render_template('category.html',newes=newes,cats=cats,categorys=categorys)
     else:
         return "Not Found"
