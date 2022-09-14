@@ -11,17 +11,6 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>News api</title>
-    <style>
-        aside {
-            height: 100%;
-            width: 15%;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            overflow-x: hidden;
-            padding-top: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -47,9 +36,13 @@
             </div>
         </div>
     </nav>
-
-    {%block content%} {%endblock%}
-    {% include "sidebar.html"%}
+    <div class="container-fluid">
+        <div class="row justify-lg-content-start">
+            {% include "sidebar.html"%}
+            {%block content%} {%endblock%}
+        </div>
+    </div>
+    
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
